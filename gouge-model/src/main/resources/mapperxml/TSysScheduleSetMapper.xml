@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.TSysScheduleSetMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.TSysScheduleSet" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="JOB_GROUP" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="CLASS_IMPL" property="classImpl" jdbcType="VARCHAR" />
+    <result column="CLASS_METHOD" property="classMethod" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="TINYINT" />
+    <result column="COMMENT" property="comment" jdbcType="VARCHAR" />
+    <result column="CRON" property="cron" jdbcType="VARCHAR" />
+    <result column="ENABLED" property="enabled" jdbcType="TINYINT" />
+    <result column="LAST_STATUS" property="lastStatus" jdbcType="TINYINT" />
+    <result column="LAST_DEAL_TIME" property="lastDealTime" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATOR" property="creator" jdbcType="CHAR" />
+    <result column="CREATED_TIME" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="REVISER" property="reviser" jdbcType="CHAR" />
+    <result column="REVISE_TIME" property="reviseTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                           separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                           separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List" >
+    ID, NAME, JOB_GROUP, CLASS_IMPL, CLASS_METHOD, TYPE, COMMENT, CRON, ENABLED, LAST_STATUS,
+    LAST_DEAL_TIME, REMARK, CREATOR, CREATED_TIME, REVISER, REVISE_TIME
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap"
+          parameterType="com.gouge.dao.entity.TSysScheduleSetExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from t_sys_schedule_set
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="queryByPage" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM t_sys_schedule_set
+    <where>
+      <if test="name != null and name != ''">
+        AND NAME=#{name}
+      </if>
+      <if test="classImpl != null and classImpl != ''">
+        AND CLASS_IMPL=#{classImpl}
+      </if>
+      <if test="classMethod != null and classMethod != ''">
+        AND CLASS_METHOD=#{classMethod}
+      </if>
+      <if test="type != null and type != ''">
+        AND TYPE=#{type}
+      </if>
+    </where>
+    <choose>
+      <when test="orderBy != null and '' != orderBy">
+        <![CDATA[ORDER BY ${orderBy}]]>
+      </when>
+      <otherwise>
+        <![CDATA[ORDER BY CREATED_TIME DESC]]>
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from t_sys_schedule_set
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_sys_schedule_set
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByExample" parameterType="com.gouge.dao.entity.TSysScheduleSetExample">
+    delete from t_sys_schedule_set
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+
+  <insert id="insert" parameterType="com.gouge.dao.entity.TSysScheduleSet" useGeneratedKeys="true"
+          keyProperty="id">
+    insert into t_sys_schedule_set (NAME, JOB_GROUP, CLASS_IMPL,
+    CLASS_METHOD, TYPE, COMMENT,
+    CRON, ENABLED, LAST_STATUS,
+    LAST_DEAL_TIME, REMARK, CREATOR,
+    CREATED_TIME, REVISER, REVISE_TIME
+    )
+    values (#{name,jdbcType=VARCHAR}, #{jobGroup,jdbcType=VARCHAR}, #{classImpl,jdbcType=VARCHAR},
+    #{classMethod,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR},
+    #{cron,jdbcType=VARCHAR}, #{enabled,jdbcType=TINYINT}, #{lastStatus,jdbcType=TINYINT},
+    #{lastDealTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR},
+    #{createdTime,jdbcType=TIMESTAMP}, #{reviser,jdbcType=CHAR}, #{reviseTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.TSysScheduleSet" useGeneratedKeys="true"
+          keyProperty="id">
+    insert into t_sys_schedule_set
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="jobGroup != null">
+        JOB_GROUP,
+      </if>
+      <if test="classImpl != null">
+        CLASS_IMPL,
+      </if>
+      <if test="classMethod != null">
+        CLASS_METHOD,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="comment != null">
+        COMMENT,
+      </if>
+      <if test="cron != null">
+        CRON,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="lastStatus != null">
+        LAST_STATUS,
+      </if>
+      <if test="lastDealTime != null">
+        LAST_DEAL_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME,
+      </if>
+      <if test="reviser != null">
+        REVISER,
+      </if>
+      <if test="reviseTime != null">
+        REVISE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null">
+        #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="classImpl != null">
+        #{classImpl,jdbcType=VARCHAR},
+      </if>
+      <if test="classMethod != null">
+        #{classMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null">
+        #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=TINYINT},
+      </if>
+      <if test="lastStatus != null">
+        #{lastStatus,jdbcType=TINYINT},
+      </if>
+      <if test="lastDealTime != null">
+        #{lastDealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        #{reviser,jdbcType=CHAR},
+      </if>
+      <if test="reviseTime != null">
+        #{reviseTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="countByExample" parameterType="com.gouge.dao.entity.TSysScheduleSetExample"
+          resultType="java.lang.Integer">
+    select count(*) from t_sys_schedule_set
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_sys_schedule_set
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobGroup != null">
+        JOB_GROUP = #{record.jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classImpl != null">
+        CLASS_IMPL = #{record.classImpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classMethod != null">
+        CLASS_METHOD = #{record.classMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=TINYINT},
+      </if>
+      <if test="record.comment != null">
+        COMMENT = #{record.comment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cron != null">
+        CRON = #{record.cron,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        ENABLED = #{record.enabled,jdbcType=TINYINT},
+      </if>
+      <if test="record.lastStatus != null">
+        LAST_STATUS = #{record.lastStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.lastDealTime != null">
+        LAST_DEAL_TIME = #{record.lastDealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=CHAR},
+      </if>
+      <if test="record.createdTime != null">
+        CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reviser != null">
+        REVISER = #{record.reviser,jdbcType=CHAR},
+      </if>
+      <if test="record.reviseTime != null">
+        REVISE_TIME = #{record.reviseTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+
+  <update id="updateByExample" parameterType="map">
+    update t_sys_schedule_set
+    set ID = #{record.id,jdbcType=INTEGER},
+    NAME = #{record.name,jdbcType=VARCHAR},
+    JOB_GROUP = #{record.jobGroup,jdbcType=VARCHAR},
+    CLASS_IMPL = #{record.classImpl,jdbcType=VARCHAR},
+    CLASS_METHOD = #{record.classMethod,jdbcType=VARCHAR},
+    TYPE = #{record.type,jdbcType=TINYINT},
+    COMMENT = #{record.comment,jdbcType=VARCHAR},
+    CRON = #{record.cron,jdbcType=VARCHAR},
+    ENABLED = #{record.enabled,jdbcType=TINYINT},
+    LAST_STATUS = #{record.lastStatus,jdbcType=TINYINT},
+    LAST_DEAL_TIME = #{record.lastDealTime,jdbcType=TIMESTAMP},
+    REMARK = #{record.remark,jdbcType=VARCHAR},
+    CREATOR = #{record.creator,jdbcType=CHAR},
+    CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+    REVISER = #{record.reviser,jdbcType=CHAR},
+    REVISE_TIME = #{record.reviseTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.TSysScheduleSet">
+    update t_sys_schedule_set
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null">
+        JOB_GROUP = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="classImpl != null">
+        CLASS_IMPL = #{classImpl,jdbcType=VARCHAR},
+      </if>
+      <if test="classMethod != null">
+        CLASS_METHOD = #{classMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        COMMENT = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null">
+        CRON = #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        ENABLED = #{enabled,jdbcType=TINYINT},
+      </if>
+      <if test="lastStatus != null">
+        LAST_STATUS = #{lastStatus,jdbcType=TINYINT},
+      </if>
+      <if test="lastDealTime != null">
+        LAST_DEAL_TIME = #{lastDealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        REVISER = #{reviser,jdbcType=CHAR},
+      </if>
+      <if test="reviseTime != null">
+        REVISE_TIME = #{reviseTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.TSysScheduleSet">
+    update t_sys_schedule_set
+    set NAME = #{name,jdbcType=VARCHAR},
+    JOB_GROUP = #{jobGroup,jdbcType=VARCHAR},
+    CLASS_IMPL = #{classImpl,jdbcType=VARCHAR},
+    CLASS_METHOD = #{classMethod,jdbcType=VARCHAR},
+    TYPE = #{type,jdbcType=TINYINT},
+    COMMENT = #{comment,jdbcType=VARCHAR},
+    CRON = #{cron,jdbcType=VARCHAR},
+    ENABLED = #{enabled,jdbcType=TINYINT},
+    LAST_STATUS = #{lastStatus,jdbcType=TINYINT},
+    LAST_DEAL_TIME = #{lastDealTime,jdbcType=TIMESTAMP},
+    REMARK = #{remark,jdbcType=VARCHAR},
+    CREATOR = #{creator,jdbcType=CHAR},
+    CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+    REVISER = #{reviser,jdbcType=CHAR},
+    REVISE_TIME = #{reviseTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateJobStatus">
+    update t_sys_schedule_set
+    set LAST_STATUS=#{status}
+    where ID = #{jobId}
+  </update>
+</mapper>

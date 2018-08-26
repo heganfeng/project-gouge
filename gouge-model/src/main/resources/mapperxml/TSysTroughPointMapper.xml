@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.TSysTroughPointMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.TSysTroughPoint" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="sourceType" property="sourcetype" jdbcType="INTEGER" />
+    <result column="pushBaidu" property="pushbaidu" jdbcType="INTEGER" />
+    <result column="submitBaidu" property="submitbaidu" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="isDelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="bad" property="bad" jdbcType="INTEGER" />
+    <result column="good" property="good" jdbcType="INTEGER" />
+    <result column="readCount" property="readcount" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="INTEGER" />
+    <result column="createUser" property="createuser" jdbcType="VARCHAR" />
+    <result column="createUserName" property="createusername" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifyUser" property="modifyuser" jdbcType="VARCHAR" />
+    <result column="modifyUserName" property="modifyusername" jdbcType="VARCHAR" />
+    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="syncId" property="syncid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, context, sourceType, pushBaidu, submitBaidu, type, status, isDelete, bad, 
+    good, readCount, comment, createUser, createUserName, createDate, modifyUser, modifyUserName, 
+    modifyDate, syncId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_trough_point
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_trough_point
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.TSysTroughPoint" >
+    insert into t_sys_trough_point (id, title, context, 
+      sourceType, pushBaidu, submitBaidu, 
+      type, status, isDelete, 
+      bad, good, readCount, 
+      comment, createUser, createUserName, 
+      createDate, modifyUser, modifyUserName, 
+      modifyDate, syncId)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
+      #{sourcetype,jdbcType=INTEGER}, #{pushbaidu,jdbcType=INTEGER}, #{submitbaidu,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR}, 
+      #{bad,jdbcType=INTEGER}, #{good,jdbcType=INTEGER}, #{readcount,jdbcType=INTEGER}, 
+      #{comment,jdbcType=INTEGER}, #{createuser,jdbcType=VARCHAR}, #{createusername,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifyuser,jdbcType=VARCHAR}, #{modifyusername,jdbcType=VARCHAR}, 
+      #{modifydate,jdbcType=TIMESTAMP}, #{syncid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.TSysTroughPoint" >
+    insert into t_sys_trough_point
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="sourcetype != null" >
+        sourceType,
+      </if>
+      <if test="pushbaidu != null" >
+        pushBaidu,
+      </if>
+      <if test="submitbaidu != null" >
+        submitBaidu,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isdelete != null" >
+        isDelete,
+      </if>
+      <if test="bad != null" >
+        bad,
+      </if>
+      <if test="good != null" >
+        good,
+      </if>
+      <if test="readcount != null" >
+        readCount,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="createuser != null" >
+        createUser,
+      </if>
+      <if test="createusername != null" >
+        createUserName,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser,
+      </if>
+      <if test="modifyusername != null" >
+        modifyUserName,
+      </if>
+      <if test="modifydate != null" >
+        modifyDate,
+      </if>
+      <if test="syncid != null" >
+        syncId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetype != null" >
+        #{sourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="pushbaidu != null" >
+        #{pushbaidu,jdbcType=INTEGER},
+      </if>
+      <if test="submitbaidu != null" >
+        #{submitbaidu,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+      <if test="bad != null" >
+        #{bad,jdbcType=INTEGER},
+      </if>
+      <if test="good != null" >
+        #{good,jdbcType=INTEGER},
+      </if>
+      <if test="readcount != null" >
+        #{readcount,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null" >
+        #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null" >
+        #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyusername != null" >
+        #{modifyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncid != null" >
+        #{syncid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.TSysTroughPoint" >
+    update t_sys_trough_point
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetype != null" >
+        sourceType = #{sourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="pushbaidu != null" >
+        pushBaidu = #{pushbaidu,jdbcType=INTEGER},
+      </if>
+      <if test="submitbaidu != null" >
+        submitBaidu = #{submitbaidu,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isDelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+      <if test="bad != null" >
+        bad = #{bad,jdbcType=INTEGER},
+      </if>
+      <if test="good != null" >
+        good = #{good,jdbcType=INTEGER},
+      </if>
+      <if test="readcount != null" >
+        readCount = #{readcount,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        createUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null" >
+        createUserName = #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser = #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyusername != null" >
+        modifyUserName = #{modifyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null" >
+        modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncid != null" >
+        syncId = #{syncid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.TSysTroughPoint" >
+    update t_sys_trough_point
+    set title = #{title,jdbcType=VARCHAR},
+      context = #{context,jdbcType=VARCHAR},
+      sourceType = #{sourcetype,jdbcType=INTEGER},
+      pushBaidu = #{pushbaidu,jdbcType=INTEGER},
+      submitBaidu = #{submitbaidu,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      isDelete = #{isdelete,jdbcType=VARCHAR},
+      bad = #{bad,jdbcType=INTEGER},
+      good = #{good,jdbcType=INTEGER},
+      readCount = #{readcount,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=INTEGER},
+      createUser = #{createuser,jdbcType=VARCHAR},
+      createUserName = #{createusername,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      modifyUser = #{modifyuser,jdbcType=VARCHAR},
+      modifyUserName = #{modifyusername,jdbcType=VARCHAR},
+      modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      syncId = #{syncid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

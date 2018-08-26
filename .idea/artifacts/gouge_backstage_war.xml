@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gouge-backstage:war">
+    <output-path>$PROJECT_DIR$/gouge-backstage/target</output-path>
+    <root id="archive" name="gouge-backstage.war">
+      <element id="artifact" artifact-name="gouge-backstage:war exploded" />
+    </root>
+  </artifact>
+</component>

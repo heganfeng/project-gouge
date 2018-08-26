@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.ApiMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.ApiMenu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="parnt_id" property="parntId" jdbcType="VARCHAR" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="is_menu" property="isMenu" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="class_style" property="classStyle" jdbcType="VARCHAR" />
+    <result column="order_by" property="orderBy" jdbcType="DECIMAL" />
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+    <result column="crt_person" property="crtPerson" jdbcType="VARCHAR" />
+    <result column="mod_date" property="modDate" jdbcType="TIMESTAMP" />
+    <result column="mod_person" property="modPerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parnt_id, menu_name, is_menu, level, url, class_style, order_by, is_active, crt_date, 
+    crt_person, mod_date, mod_person
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from api_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from api_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.ApiMenu" >
+    insert into api_menu (id, parnt_id, menu_name, 
+      is_menu, level, url, 
+      class_style, order_by, is_active, 
+      crt_date, crt_person, mod_date, 
+      mod_person)
+    values (#{id,jdbcType=VARCHAR}, #{parntId,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{isMenu,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{classStyle,jdbcType=VARCHAR}, #{orderBy,jdbcType=DECIMAL}, #{isActive,jdbcType=INTEGER}, 
+      #{crtDate,jdbcType=TIMESTAMP}, #{crtPerson,jdbcType=VARCHAR}, #{modDate,jdbcType=TIMESTAMP}, 
+      #{modPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.ApiMenu" >
+    insert into api_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parntId != null" >
+        parnt_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="isMenu != null" >
+        is_menu,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="classStyle != null" >
+        class_style,
+      </if>
+      <if test="orderBy != null" >
+        order_by,
+      </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+      <if test="crtPerson != null" >
+        crt_person,
+      </if>
+      <if test="modDate != null" >
+        mod_date,
+      </if>
+      <if test="modPerson != null" >
+        mod_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="parntId != null" >
+        #{parntId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="classStyle != null" >
+        #{classStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBy != null" >
+        #{orderBy,jdbcType=DECIMAL},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtPerson != null" >
+        #{crtPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modDate != null" >
+        #{modDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPerson != null" >
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.ApiMenu" >
+    update api_menu
+    <set >
+      <if test="parntId != null" >
+        parnt_id = #{parntId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        is_menu = #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="classStyle != null" >
+        class_style = #{classStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBy != null" >
+        order_by = #{orderBy,jdbcType=DECIMAL},
+      </if>
+      <if test="isActive != null" >
+        is_active = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtPerson != null" >
+        crt_person = #{crtPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modDate != null" >
+        mod_date = #{modDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPerson != null" >
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.ApiMenu" >
+    update api_menu
+    set parnt_id = #{parntId,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      is_menu = #{isMenu,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      class_style = #{classStyle,jdbcType=VARCHAR},
+      order_by = #{orderBy,jdbcType=DECIMAL},
+      is_active = #{isActive,jdbcType=INTEGER},
+      crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      crt_person = #{crtPerson,jdbcType=VARCHAR},
+      mod_date = #{modDate,jdbcType=TIMESTAMP},
+      mod_person = #{modPerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

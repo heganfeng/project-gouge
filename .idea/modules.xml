@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Horizon/Horizon.iml" filepath="$PROJECT_DIR$/../Horizon/Horizon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gouge-backstage/gouge-backstage.iml" filepath="$PROJECT_DIR$/gouge-backstage/gouge-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gouge-common/gouge-common.iml" filepath="$PROJECT_DIR$/gouge-common/gouge-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gouge-kit/gouge-kit.iml" filepath="$PROJECT_DIR$/gouge-kit/gouge-kit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gouge-model/gouge-model.iml" filepath="$PROJECT_DIR$/gouge-model/gouge-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gouge-server/gouge-server.iml" filepath="$PROJECT_DIR$/gouge-server/gouge-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../htmlSystem/htmlSystem.iml" filepath="$PROJECT_DIR$/../htmlSystem/htmlSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-gouge.iml" filepath="$PROJECT_DIR$/project-gouge.iml" />
+    </modules>
+  </component>
+</project>

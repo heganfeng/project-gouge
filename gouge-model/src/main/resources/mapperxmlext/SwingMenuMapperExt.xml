@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouge.dao.mapperext.SwingMenuMapperExt">
+
+  <select id="getFirstMenus" resultMap="com.gouge.dao.mapper.SwingMenuMapper.BaseResultMap">
+    SELECT * FROM swing_menu WHERE parnt_id is NULL order by crt_date asc
+  </select>
+
+  <select id="getMenuForParantId" resultMap="com.gouge.dao.mapper.SwingMenuMapper.BaseResultMap">
+    SELECT * FROM swing_menu WHERE parnt_id = #{id}  order by crt_date asc
+  </select>
+
+  <select id="getPageMenus" resultMap="com.gouge.dao.mapper.SwingMenuMapper.BaseResultMap">
+    select  * from swing_menu where 1=1
+    <if test="menuName != null and menuName != ''" >
+       and menu_name  like CONCAT('%',#{menuName},'%')
+    </if>
+    <if test="isMenu != null" >
+      and is_menu  = #{isMenu}
+    </if>
+    <if test="isActive != null" >
+      and is_active  = #{isActive}
+    </if>
+    order by crt_date DESC
+  </select>
+
+
+</mapper>
+
+

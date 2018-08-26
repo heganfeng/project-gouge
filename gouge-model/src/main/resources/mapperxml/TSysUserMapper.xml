@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.TSysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.TSysUser" >
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userCode" property="usercode" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="passWord" property="password" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="createUser" property="createuser" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="phoneBind" property="phonebind" jdbcType="VARCHAR" />
+    <result column="emailBind" property="emailbind" jdbcType="VARCHAR" />
+    <result column="levelInt" property="levelint" jdbcType="INTEGER" />
+    <result column="levelName" property="levelname" jdbcType="VARCHAR" />
+    <result column="tuCoin" property="tucoin" jdbcType="INTEGER" />
+    <result column="modifyUser" property="modifyuser" jdbcType="VARCHAR" />
+    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="lastLoginDate" property="lastlogindate" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="roleid" property="roleid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, userCode, userName, passWord, tel, email, createUser, createDate, status, 
+    phoneBind, emailBind, levelInt, levelName, tuCoin, modifyUser, modifyDate, lastLoginDate, 
+    remark, roleid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.TSysUser" >
+    insert into t_sys_user (userId, userCode, userName, 
+      passWord, tel, email, 
+      createUser, createDate, status, 
+      phoneBind, emailBind, levelInt, 
+      levelName, tuCoin, modifyUser, 
+      modifyDate, lastLoginDate, remark, 
+      roleid)
+    values (#{userid,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{phonebind,jdbcType=VARCHAR}, #{emailbind,jdbcType=VARCHAR}, #{levelint,jdbcType=INTEGER}, 
+      #{levelname,jdbcType=VARCHAR}, #{tucoin,jdbcType=INTEGER}, #{modifyuser,jdbcType=VARCHAR}, 
+      #{modifydate,jdbcType=TIMESTAMP}, #{lastlogindate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.TSysUser" >
+    insert into t_sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="usercode != null" >
+        userCode,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="password != null" >
+        passWord,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="createuser != null" >
+        createUser,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="phonebind != null" >
+        phoneBind,
+      </if>
+      <if test="emailbind != null" >
+        emailBind,
+      </if>
+      <if test="levelint != null" >
+        levelInt,
+      </if>
+      <if test="levelname != null" >
+        levelName,
+      </if>
+      <if test="tucoin != null" >
+        tuCoin,
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser,
+      </if>
+      <if test="modifydate != null" >
+        modifyDate,
+      </if>
+      <if test="lastlogindate != null" >
+        lastLoginDate,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="roleid != null" >
+        roleid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null" >
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phonebind != null" >
+        #{phonebind,jdbcType=VARCHAR},
+      </if>
+      <if test="emailbind != null" >
+        #{emailbind,jdbcType=VARCHAR},
+      </if>
+      <if test="levelint != null" >
+        #{levelint,jdbcType=INTEGER},
+      </if>
+      <if test="levelname != null" >
+        #{levelname,jdbcType=VARCHAR},
+      </if>
+      <if test="tucoin != null" >
+        #{tucoin,jdbcType=INTEGER},
+      </if>
+      <if test="modifyuser != null" >
+        #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogindate != null" >
+        #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.TSysUser" >
+    update t_sys_user
+    <set >
+      <if test="usercode != null" >
+        userCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        passWord = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        createUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phonebind != null" >
+        phoneBind = #{phonebind,jdbcType=VARCHAR},
+      </if>
+      <if test="emailbind != null" >
+        emailBind = #{emailbind,jdbcType=VARCHAR},
+      </if>
+      <if test="levelint != null" >
+        levelInt = #{levelint,jdbcType=INTEGER},
+      </if>
+      <if test="levelname != null" >
+        levelName = #{levelname,jdbcType=VARCHAR},
+      </if>
+      <if test="tucoin != null" >
+        tuCoin = #{tucoin,jdbcType=INTEGER},
+      </if>
+      <if test="modifyuser != null" >
+        modifyUser = #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null" >
+        modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogindate != null" >
+        lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        roleid = #{roleid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.TSysUser" >
+    update t_sys_user
+    set userCode = #{usercode,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      passWord = #{password,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      createUser = #{createuser,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      phoneBind = #{phonebind,jdbcType=VARCHAR},
+      emailBind = #{emailbind,jdbcType=VARCHAR},
+      levelInt = #{levelint,jdbcType=INTEGER},
+      levelName = #{levelname,jdbcType=VARCHAR},
+      tuCoin = #{tucoin,jdbcType=INTEGER},
+      modifyUser = #{modifyuser,jdbcType=VARCHAR},
+      modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      roleid = #{roleid,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

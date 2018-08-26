@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx      
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+       default-autowire="byName">
+
+	
+    <bean id="heganfengSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="heganfengDataSource"/>
+        </property>
+        <property name="configLocation" value="classpath:config/spring-gouge-mybatis.xml"/>
+        <!-- 配置mapper.xml???? 跟 mybatis-config.xml中有什么区别?
+        <property name="mapperLocations" value="classpath*:dao/*.xml"/> -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mapperxml/*.xml</value>
+                <value>classpath*:mapperxmlext/*.xml</value>
+            </list>
+        </property>
+        	<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value>
+							dialect=mysql
+							reasonable=false
+							rowBoundsWithCount=true
+							offsetAsPageNum=true
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+    </bean>
+
+    <!-- 扫描映射-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.gouge.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="heganfengSqlSessionFactory"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="heganfengDataSource"/>
+        </property>
+    </bean>
+
+    <tx:advice transaction-manager="transactionManager" id="defaultTransactionAdvice">
+        <tx:attributes>
+        	<tx:method name="search*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="query*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="load*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="valid*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="list*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="pay*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="send*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="jhelpSvrTransactionPolicy"
+                      expression=" execution(* com.gouge.*.service..*.*(..)) or
+                       execution(* com.gouge.service..*.*(..)) "/>
+        <aop:advisor id="jhelpSvrTransactionAdvisor" advice-ref="defaultTransactionAdvice"
+                     pointcut-ref="jhelpSvrTransactionPolicy"/>
+    </aop:config>
+</beans>

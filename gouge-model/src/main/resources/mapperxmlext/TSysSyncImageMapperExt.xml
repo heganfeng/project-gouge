@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouge.dao.mapperext.TSysSyncImageMapperExt">
+
+  <select id="getImageBySyncId" resultMap="com.gouge.dao.mapper.TSysSyncImageMapper.BaseResultMap">
+    SELECT * FROM t_sys_sync_image WHERE SYNC_ID = #{syncId} ORDER  BY CREATE_DATE
+  </select>
+
+  <select id="getNoLocalList" resultMap="com.gouge.dao.mapper.TSysSyncImageMapper.BaseResultMap">
+    SELECT * FROM t_sys_sync_image WHERE LOCAL_PATH IS NULL ORDER  BY CREATE_DATE
+  </select>
+</mapper>
+
+

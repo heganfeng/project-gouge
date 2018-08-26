@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouge.dao.mapperext.SwingNotepadMapperExt">
+
+  <select id="getPageNotepads" resultMap="com.gouge.dao.mapper.SwingNotepadMapper.BaseResultMap">
+    select  * from swing_notepad where user_id = #{userId}
+    <if test="title != null and title != ''" >
+       and title  like CONCAT('%',#{title},'%')
+    </if>
+    <if test="keyword != null and musicName != ''" >
+      and keyword  like CONCAT('%',#{keyword},'%')
+    </if>
+    order by crt_date DESC
+  </select>
+
+  <select id="getNotepadByUserId" resultMap="com.gouge.dao.mapper.SwingNotepadMapper.BaseResultMap">
+    select  * from swing_notepad where user_id = #{userId}
+    <if test="title != null and title != ''" >
+      and title  like CONCAT('%',#{title},'%')
+    </if>
+    <if test="keyword != null and musicName != ''" >
+      and keyword  like CONCAT('%',#{keyword},'%')
+    </if>
+    order by crt_date DESC
+  </select>
+
+</mapper>
+
+

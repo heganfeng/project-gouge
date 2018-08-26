@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.SwingMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.SwingMenu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="parnt_id" property="parntId" jdbcType="VARCHAR" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="is_menu" property="isMenu" jdbcType="INTEGER" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+    <result column="mod_date" property="modDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parnt_id, menu_name, is_menu, class_name, is_active, crt_date, mod_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from swing_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from swing_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.SwingMenu" >
+    insert into swing_menu (id, parnt_id, menu_name, 
+      is_menu, class_name, is_active, 
+      crt_date, mod_date)
+    values (#{id,jdbcType=VARCHAR}, #{parntId,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{isMenu,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{isActive,jdbcType=INTEGER}, 
+      #{crtDate,jdbcType=TIMESTAMP}, #{modDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.SwingMenu" >
+    insert into swing_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parntId != null" >
+        parnt_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="isMenu != null" >
+        is_menu,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+      <if test="modDate != null" >
+        mod_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="parntId != null" >
+        #{parntId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.SwingMenu" >
+    update swing_menu
+    <set >
+      <if test="parntId != null" >
+        parnt_id = #{parntId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        is_menu = #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null" >
+        is_active = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        mod_date = #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.SwingMenu" >
+    update swing_menu
+    set parnt_id = #{parntId,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      is_menu = #{isMenu,jdbcType=INTEGER},
+      class_name = #{className,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=INTEGER},
+      crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      mod_date = #{modDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

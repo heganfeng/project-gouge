@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gouge</groupId>
+  <artifactId>project-gouge</artifactId>
+  <version>1.0.1</version>
+  <modules>
+    <module>api</module>
+    <module>gouge-kit</module>
+    <module>gouge-model</module>
+    <module>gouge-server</module>
+    <module>gouge-common</module>
+    <module>gouge-backstage</module>
+  </modules>
+  <name>project-gouge</name>
+  <packaging>pom</packaging>
+  <description>gouge</description>
+  <inceptionYear>2017</inceptionYear>
+
+  <organization>
+    <name>gouge</name>
+    <url>http://www.gouge.com</url>
+  </organization>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

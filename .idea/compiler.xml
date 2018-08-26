@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="api" />
+        <module name="gouge-backstage" />
+        <module name="gouge-common" />
+        <module name="gouge-kit" />
+        <module name="gouge-model" />
+        <module name="gouge-server" />
+        <module name="Horizon" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="1.8" />
+      <module name="gouge-backstage" target="1.8" />
+      <module name="gouge-common" target="1.8" />
+      <module name="gouge-kit" target="1.8" />
+      <module name="gouge-model" target="1.8" />
+      <module name="gouge-server" target="1.8" />
+      <module name="Horizon" target="1.7" />
+      <module name="project-gouge" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

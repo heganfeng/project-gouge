@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouge.dao.mapperext.TSysTroughPointMapperExt">
+
+  <select id="getAll" resultMap="com.gouge.dao.mapper.TSysTroughPointMapper.BaseResultMap">
+    select  * from t_sys_trough_point limit 10
+  </select>
+
+  <select id="getAllByPage" resultMap="com.gouge.dao.mapper.TSysTroughPointMapper.BaseResultMap">
+    select  * from t_sys_trough_point order by createDate DESC
+  </select>
+
+</mapper>
+
+

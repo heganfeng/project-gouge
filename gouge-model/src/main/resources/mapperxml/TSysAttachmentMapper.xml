@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.TSysAttachmentMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.TSysAttachment" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="refId" property="refid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="fileType" property="filetype" jdbcType="VARCHAR" />
+    <result column="oldName" property="oldname" jdbcType="VARCHAR" />
+    <result column="imgWidth" property="imgwidth" jdbcType="INTEGER" />
+    <result column="imgHeight" property="imgheight" jdbcType="INTEGER" />
+    <result column="createUser" property="createuser" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, refId, type, path, fileType, oldName, imgWidth, imgHeight, createUser, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_attachment
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_attachment
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.TSysAttachment" >
+    insert into t_sys_attachment (id, refId, type, 
+      path, fileType, oldName, 
+      imgWidth, imgHeight, createUser, 
+      createDate)
+    values (#{id,jdbcType=VARCHAR}, #{refid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{filetype,jdbcType=VARCHAR}, #{oldname,jdbcType=VARCHAR}, 
+      #{imgwidth,jdbcType=INTEGER}, #{imgheight,jdbcType=INTEGER}, #{createuser,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.TSysAttachment" >
+    insert into t_sys_attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="refid != null" >
+        refId,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="filetype != null" >
+        fileType,
+      </if>
+      <if test="oldname != null" >
+        oldName,
+      </if>
+      <if test="imgwidth != null" >
+        imgWidth,
+      </if>
+      <if test="imgheight != null" >
+        imgHeight,
+      </if>
+      <if test="createuser != null" >
+        createUser,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="oldname != null" >
+        #{oldname,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwidth != null" >
+        #{imgwidth,jdbcType=INTEGER},
+      </if>
+      <if test="imgheight != null" >
+        #{imgheight,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.TSysAttachment" >
+    update t_sys_attachment
+    <set >
+      <if test="refid != null" >
+        refId = #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        fileType = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="oldname != null" >
+        oldName = #{oldname,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwidth != null" >
+        imgWidth = #{imgwidth,jdbcType=INTEGER},
+      </if>
+      <if test="imgheight != null" >
+        imgHeight = #{imgheight,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        createUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.TSysAttachment" >
+    update t_sys_attachment
+    set refId = #{refid,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      fileType = #{filetype,jdbcType=VARCHAR},
+      oldName = #{oldname,jdbcType=VARCHAR},
+      imgWidth = #{imgwidth,jdbcType=INTEGER},
+      imgHeight = #{imgheight,jdbcType=INTEGER},
+      createUser = #{createuser,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

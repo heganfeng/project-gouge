@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.SwingIcoMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.SwingIco" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="ico_path" property="icoPath" jdbcType="VARCHAR" />
+    <result column="ico_name" property="icoName" jdbcType="VARCHAR" />
+    <result column="ico_type" property="icoType" jdbcType="INTEGER" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+    <result column="seq" property="seq" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ico_path, ico_name, ico_type, crt_date, seq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from swing_ico
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from swing_ico
+    order by seq asc,crt_date asc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from swing_ico
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.SwingIco" >
+    insert into swing_ico (id, ico_path, ico_name, 
+      ico_type, crt_date, seq
+      )
+    values (#{id,jdbcType=VARCHAR}, #{icoPath,jdbcType=VARCHAR}, #{icoName,jdbcType=VARCHAR}, 
+      #{icoType,jdbcType=INTEGER}, #{crtDate,jdbcType=TIMESTAMP}, #{seq,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.SwingIco" >
+    insert into swing_ico
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="icoPath != null" >
+        ico_path,
+      </if>
+      <if test="icoName != null" >
+        ico_name,
+      </if>
+      <if test="icoType != null" >
+        ico_type,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="icoPath != null" >
+        #{icoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="icoName != null" >
+        #{icoName,jdbcType=VARCHAR},
+      </if>
+      <if test="icoType != null" >
+        #{icoType,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.SwingIco" >
+    update swing_ico
+    <set >
+      <if test="icoPath != null" >
+        ico_path = #{icoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="icoName != null" >
+        ico_name = #{icoName,jdbcType=VARCHAR},
+      </if>
+      <if test="icoType != null" >
+        ico_type = #{icoType,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.SwingIco" >
+    update swing_ico
+    set ico_path = #{icoPath,jdbcType=VARCHAR},
+      ico_name = #{icoName,jdbcType=VARCHAR},
+      ico_type = #{icoType,jdbcType=INTEGER},
+      crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      seq = #{seq,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

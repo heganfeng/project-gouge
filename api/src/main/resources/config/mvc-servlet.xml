@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+	    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        "
+>
+
+    <!-- 引入属性配置文件-->
+    <bean id="propertyConfigurer" class="net.jhelp.maas.spring.prop.PropertyHolderSetting">
+        <property name="locations">
+            <array>
+                <value>file:/home/gouge/api/config.properties</value>
+                <value>classpath*:/config.properties</value>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 自动扫描包 -->
+    <context:component-scan base-package="com.gouge.controller">
+    </context:component-scan>
+
+    <!--&lt;!&ndash; swagger2框架的注解启动类 &ndash;&gt;-->
+    <!--<bean class="com.zhidian.cmb.SpringfoxDocConfig"></bean>-->
+
+
+    <mvc:default-servlet-handler />
+
+    <!--&lt;!&ndash; 自定义错误处理，将错误转换为系统可识别的输出方式 &ndash;&gt;-->
+    <bean class="com.gouge.interceptor.MyExceptionHandler">
+    </bean>
+
+    <!--<bean id="requestParametersLogAdvice" class="com.gouge.interceptor.RequestParametersLogAdvice" />-->
+
+    <!--<aop:config proxy-target-class="true">-->
+        <!--<aop:pointcut id="requestParamsLog" expression="execution(* com.gouge.controller..*.*(..))"/>-->
+        <!--<aop:advisor advice-ref="requestParametersLogAdvice" pointcut-ref="requestParamsLog"/>-->
+    <!--</aop:config>-->
+</beans>

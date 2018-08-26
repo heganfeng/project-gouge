@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouge.dao.mapperext.SwingUserRelationMapperExt">
+
+  <select id="getPageRelations" resultMap="com.gouge.dao.mapper.SwingUserRelationMapper.BaseResultMap">
+    select  * from swing_user_relation where user_id = #{userId}
+    <if test="friendCode != null and friendCode != ''" >
+       and friend_code  like CONCAT('%',#{friendCode},'%')
+    </if>
+    <if test="friendName != null and friendName != ''" >
+      and friend_name  like CONCAT('%',#{friendName},'%')
+    </if>
+    <if test="familiarity != null" >
+      and familiarity  >= ${familiarity}
+    </if>
+    order by familiarity desc,crt_date DESC
+  </select>
+
+  <select id="getRelationByUserId" resultMap="com.gouge.dao.mapper.SwingUserRelationMapper.BaseResultMap">
+    select  * from swing_notepad where user_id = #{userId}
+    order by familiarity desc,crt_date DESC
+  </select>
+
+  <select id="getRelationByUserCode" resultMap="com.gouge.dao.mapper.SwingUserRelationMapper.BaseResultMap">
+    select  * from swing_notepad where friend_code = #{userCode}
+    <if test="userId != null and userId != ''" >
+      and user_id = #{userId}
+    </if>
+    limit 1
+  </select>
+
+</mapper>
+
+

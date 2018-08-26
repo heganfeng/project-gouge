@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.TSysSyncImageMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.TSysSyncImage" >
+    <id column="REC_ID" property="recId" jdbcType="VARCHAR" />
+    <result column="SYNC_ID" property="syncId" jdbcType="VARCHAR" />
+    <result column="PATH" property="path" jdbcType="VARCHAR" />
+    <result column="LOCAL_PATH" property="localPath" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="REVISE_DATE" property="reviseDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REC_ID, SYNC_ID, PATH, LOCAL_PATH, CREATE_DATE, REVISE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_sync_image
+    where REC_ID = #{recId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_sync_image
+    where REC_ID = #{recId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.TSysSyncImage" >
+    insert into t_sys_sync_image (REC_ID, SYNC_ID, PATH, 
+      LOCAL_PATH, CREATE_DATE, REVISE_DATE
+      )
+    values (#{recId,jdbcType=VARCHAR}, #{syncId,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{localPath,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{reviseDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.TSysSyncImage" >
+    insert into t_sys_sync_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        REC_ID,
+      </if>
+      <if test="syncId != null" >
+        SYNC_ID,
+      </if>
+      <if test="path != null" >
+        PATH,
+      </if>
+      <if test="localPath != null" >
+        LOCAL_PATH,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="reviseDate != null" >
+        REVISE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=VARCHAR},
+      </if>
+      <if test="syncId != null" >
+        #{syncId,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="localPath != null" >
+        #{localPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviseDate != null" >
+        #{reviseDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.TSysSyncImage" >
+    update t_sys_sync_image
+    <set >
+      <if test="syncId != null" >
+        SYNC_ID = #{syncId,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        PATH = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="localPath != null" >
+        LOCAL_PATH = #{localPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviseDate != null" >
+        REVISE_DATE = #{reviseDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where REC_ID = #{recId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.TSysSyncImage" >
+    update t_sys_sync_image
+    set SYNC_ID = #{syncId,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      LOCAL_PATH = #{localPath,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      REVISE_DATE = #{reviseDate,jdbcType=TIMESTAMP}
+    where REC_ID = #{recId,jdbcType=VARCHAR}
+  </update>
+</mapper>

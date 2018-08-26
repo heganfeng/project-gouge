@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/../Horizon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Horizon/src/main/java/com/gouge/base/TaskTray.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Horizon/src/main/java/com/gouge/main/MainFrame.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Horizon/src/main/java/com/gouge/main/StartMain.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gouge-backstage" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gouge-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gouge-kit" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gouge-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gouge-server" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

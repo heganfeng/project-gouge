@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.SwingUserRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.SwingUserRelation" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="friend_id" property="friendId" jdbcType="VARCHAR" />
+    <result column="friend_code" property="friendCode" jdbcType="VARCHAR" />
+    <result column="friend_name" property="friendName" jdbcType="VARCHAR" />
+    <result column="familiarity" property="familiarity" jdbcType="INTEGER" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+    <result column="mod_date" property="modDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, friend_id, friend_code, friend_name, familiarity, crt_date, mod_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from swing_user_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from swing_user_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.SwingUserRelation" >
+    insert into swing_user_relation (id, user_id, friend_id, 
+      friend_code, friend_name, familiarity, 
+      crt_date, mod_date)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{friendId,jdbcType=VARCHAR}, 
+      #{friendCode,jdbcType=VARCHAR}, #{friendName,jdbcType=VARCHAR}, #{familiarity,jdbcType=INTEGER}, 
+      #{crtDate,jdbcType=TIMESTAMP}, #{modDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.SwingUserRelation" >
+    insert into swing_user_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="friendId != null" >
+        friend_id,
+      </if>
+      <if test="friendCode != null" >
+        friend_code,
+      </if>
+      <if test="friendName != null" >
+        friend_name,
+      </if>
+      <if test="familiarity != null" >
+        familiarity,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+      <if test="modDate != null" >
+        mod_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="friendId != null" >
+        #{friendId,jdbcType=VARCHAR},
+      </if>
+      <if test="friendCode != null" >
+        #{friendCode,jdbcType=VARCHAR},
+      </if>
+      <if test="friendName != null" >
+        #{friendName,jdbcType=VARCHAR},
+      </if>
+      <if test="familiarity != null" >
+        #{familiarity,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.SwingUserRelation" >
+    update swing_user_relation
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="friendId != null" >
+        friend_id = #{friendId,jdbcType=VARCHAR},
+      </if>
+      <if test="friendCode != null" >
+        friend_code = #{friendCode,jdbcType=VARCHAR},
+      </if>
+      <if test="friendName != null" >
+        friend_name = #{friendName,jdbcType=VARCHAR},
+      </if>
+      <if test="familiarity != null" >
+        familiarity = #{familiarity,jdbcType=INTEGER},
+      </if>
+      <if test="crtDate != null" >
+        crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        mod_date = #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.SwingUserRelation" >
+    update swing_user_relation
+    set user_id = #{userId,jdbcType=VARCHAR},
+      friend_id = #{friendId,jdbcType=VARCHAR},
+      friend_code = #{friendCode,jdbcType=VARCHAR},
+      friend_name = #{friendName,jdbcType=VARCHAR},
+      familiarity = #{familiarity,jdbcType=INTEGER},
+      crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      mod_date = #{modDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

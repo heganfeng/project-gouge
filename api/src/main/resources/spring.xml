@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" default-autowire="byName">
+
+    <!-- 引入属性配置文件-->
+    <bean id="propertyConfigurer" class="net.jhelp.maas.spring.prop.PropertyHolderSetting">
+        <property name="locations">
+            <array>
+                <value>file:/home/zhidian/zhidian-cmb-web/config.properties</value>
+                <value>classpath*:/config.properties</value>
+            </array>
+        </property>
+    </bean>
+
+    <import resource="classpath*:/config/spring-gouge-dao.xml"/>
+    <import resource="classpath*:/config/spring-gouge-mybatis.xml"/>
+    <import resource="classpath*:/config/spring-gouge-service.xml"/>
+    <import resource="classpath*:/config/spring-gouge-ds.xml"/>
+</beans>

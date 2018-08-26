@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gouge.dao.mapper.SwingMusicMapper" >
+  <resultMap id="BaseResultMap" type="com.gouge.dao.entity.SwingMusic" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="music_name" property="musicName" jdbcType="VARCHAR" />
+    <result column="absolute_path" property="absolutePath" jdbcType="VARCHAR" />
+    <result column="access_path" property="accessPath" jdbcType="VARCHAR" />
+    <result column="artist" property="artist" jdbcType="VARCHAR" />
+    <result column="seq" property="seq" jdbcType="DECIMAL" />
+    <result column="replace_path" property="replacePath" jdbcType="VARCHAR" />
+    <result column="music_type" property="musicType" jdbcType="VARCHAR" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+    <result column="mod_date" property="modDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, music_name, absolute_path, access_path, artist, seq, replace_path, music_type, 
+    crt_date, mod_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from swing_music
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from swing_music
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gouge.dao.entity.SwingMusic" >
+    insert into swing_music (id, user_id, music_name, 
+      absolute_path, access_path, artist, 
+      seq, replace_path, music_type, 
+      crt_date, mod_date)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{musicName,jdbcType=VARCHAR}, 
+      #{absolutePath,jdbcType=VARCHAR}, #{accessPath,jdbcType=VARCHAR}, #{artist,jdbcType=VARCHAR}, 
+      #{seq,jdbcType=DECIMAL}, #{replacePath,jdbcType=VARCHAR}, #{musicType,jdbcType=VARCHAR}, 
+      #{crtDate,jdbcType=TIMESTAMP}, #{modDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gouge.dao.entity.SwingMusic" >
+    insert into swing_music
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="musicName != null" >
+        music_name,
+      </if>
+      <if test="absolutePath != null" >
+        absolute_path,
+      </if>
+      <if test="accessPath != null" >
+        access_path,
+      </if>
+      <if test="artist != null" >
+        artist,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="replacePath != null" >
+        replace_path,
+      </if>
+      <if test="musicType != null" >
+        music_type,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+      <if test="modDate != null" >
+        mod_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="musicName != null" >
+        #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="absolutePath != null" >
+        #{absolutePath,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPath != null" >
+        #{accessPath,jdbcType=VARCHAR},
+      </if>
+      <if test="artist != null" >
+        #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=DECIMAL},
+      </if>
+      <if test="replacePath != null" >
+        #{replacePath,jdbcType=VARCHAR},
+      </if>
+      <if test="musicType != null" >
+        #{musicType,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gouge.dao.entity.SwingMusic" >
+    update swing_music
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="musicName != null" >
+        music_name = #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="absolutePath != null" >
+        absolute_path = #{absolutePath,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPath != null" >
+        access_path = #{accessPath,jdbcType=VARCHAR},
+      </if>
+      <if test="artist != null" >
+        artist = #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=DECIMAL},
+      </if>
+      <if test="replacePath != null" >
+        replace_path = #{replacePath,jdbcType=VARCHAR},
+      </if>
+      <if test="musicType != null" >
+        music_type = #{musicType,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDate != null" >
+        crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDate != null" >
+        mod_date = #{modDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gouge.dao.entity.SwingMusic" >
+    update swing_music
+    set user_id = #{userId,jdbcType=VARCHAR},
+      music_name = #{musicName,jdbcType=VARCHAR},
+      absolute_path = #{absolutePath,jdbcType=VARCHAR},
+      access_path = #{accessPath,jdbcType=VARCHAR},
+      artist = #{artist,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=DECIMAL},
+      replace_path = #{replacePath,jdbcType=VARCHAR},
+      music_type = #{musicType,jdbcType=VARCHAR},
+      crt_date = #{crtDate,jdbcType=TIMESTAMP},
+      mod_date = #{modDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
